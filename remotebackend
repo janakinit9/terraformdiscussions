@@ -1,0 +1,22 @@
+provider "aws" {
+  region = "us-west-1"
+}
+terraform {
+
+  backend "s3" {
+    encrypt = true
+
+    bucket = "codesantaclara"
+
+    dynamodb_table = "tflocktable"
+
+    key = "test.tfstate"
+
+  }
+
+}
+
+
+resource "aws_vpc" "mypc" {
+  cidr_block = "10.0.0.0/16"
+}
